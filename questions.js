@@ -49,6 +49,10 @@ const quick_sort = () => {
     numbers.push(number_typed);
   }
   let [pivot] = numbers;
+  for (let i = 0; i < numbers.length; i++) {
+    console.log("teste");
+  }
   console.log(pivot);
   console.log(numbers);
 };
+console.log("TESTE");
