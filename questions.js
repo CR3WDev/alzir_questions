@@ -39,7 +39,34 @@ const fibonacci = () => {
   });
   alert(fibonacci_string);
 };
-// const mdc = () => {};
+const mdc = () => {
+  let numbers = [];
+  for (let i = 1; i <= 2; i++) {
+    let number_typed = parseInt(prompt(`digite 2 números inteiros ${i}/${2}`));
+    numbers.push(number_typed);
+  }
+  let [x, y] = numbers;
+  if (x < y) {
+    let aux = x;
+    x = y;
+    y = aux;
+  }
+  let has_mdc = false;
+  let mdc = 0;
+  for (let i = 0; !has_mdc; i++) {
+    let divider = x - i;
+    if (x % divider === 0 && y % divider === 0) {
+      mdc = divider;
+      has_mdc = true;
+    }
+  }
+  alert(`MDC de ${numbers[0]} e ${numbers[1]} é ${mdc}`);
+};
+const integer_numbers_counter = () => {
+  let number = parseInt(prompt("Digite um número"));
+  let integer_numbers = Math.abs(number.toFixed(0));
+  alert(`tem ${integer_numbers} números inteiros entre entre 1 e ${number} `);
+};
 const quick_sort = () => {
   let numbers = [];
   let total_numbers = prompt("Digite quantos números deseja somar");
