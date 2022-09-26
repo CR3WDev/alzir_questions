@@ -62,49 +62,30 @@ const mdc = () => {
   }
   alert(`MDC de ${numbers[0]} e ${numbers[1]} é ${mdc}`);
 };
-const integer_numbers_counter = () => {
-  let number = parseInt(prompt("Digite um número"));
-  let integer_numbers = Math.abs(number.toFixed(0));
-  alert(`tem ${integer_numbers} números inteiros entre entre 1 e ${number} `);
+const is_integer = (n) => {
+  return n % 1 == 0;
 };
-const quick_sort = () => {
+const integer_numbers_counter = () => {
   let numbers = [];
-  let total_numbers = prompt("Digite quantos números deseja somar");
+  let counter = 0;
+  let total_numbers = parseInt(
+    prompt(`digite quantos números você quer testar`)
+  );
+  let last_number = prompt(`digite um número final`);
+
   for (let i = 1; i <= total_numbers; i++) {
-    let number_typed = parseInt(
-      prompt(`digite os numeros para se somar ${i}/${total_numbers}`)
+    let number_typed = parseFloat(
+      prompt(`digite um número: ${i}/${total_numbers}`)
     );
     numbers.push(number_typed);
   }
-  let numbers_no_sorted = [...numbers];
-  let [pivot] = numbers;
-  let left = 1;
-  for (let i = 1; i < numbers.length; i++) {
-    if (pivot >= numbers[i]) {
-      let aux = numbers[left];
-      numbers[left] = numbers[i];
-      numbers[i] = aux;
-      left++;
-    }
-  }
-  let aux = numbers[left - 1];
-  numbers[left - 1] = pivot;
-  numbers[0] = aux;
-  for (let i = 0; i < pivot; i++) {
-    if (numbers[i] > numbers[i + 1]) {
-      let aux = numbers[i];
-      numbers[i] = numbers[i + 1];
-      numbers[i + 1] = aux;
-    }
-  }
-  for (let i = pivot; i < numbers.length; i++) {
-    if (numbers[i] > numbers[i + 1]) {
-      let aux = numbers[i];
-      numbers[i] = numbers[i + 1];
-      numbers[i + 1] = aux;
-    }
+  for (const key in numbers) {
+    if (!is_integer(numbers[key])) continue;
+    if (numbers[key] < 1 || numbers[key] > last_number) continue;
+    counter++;
   }
   alert(
-    `Sequência digitada: \n ${numbers_no_sorted} \n Sequência em ordem crescente: \n ${numbers}`
+    `Números digitados: ${numbers} \n Entre 1 e ${last_number} tem ${counter} número(s) inteiro(s)`
   );
 };
+const quick_sort = () => {};

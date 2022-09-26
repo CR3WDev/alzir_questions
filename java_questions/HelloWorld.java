@@ -84,55 +84,42 @@ class HelloWorld {
         }
         System.out.println("Seu mdc é:" + mdc);
     }
+    public static boolean is_integer(Double number) {
+      return number % 1 == 0;
+    }
     public static void integer_numbers_counter() {
-        System.out.println("Digite um número");
-        Scanner scanner = new Scanner(System.in);
-        String number_typed = scanner.next();
+      ArrayList<Double> numbers = new ArrayList<Double>();
+      Integer counter = 0;
+      System.out.println("digite quantos números você quer testar");
+      Scanner scanner = new Scanner(System.in);
+      Integer total_numbers = scanner.nextInt();
+      System.out.println("digite um número final");
+      Scanner scanner2 = new Scanner(System.in);
+      Integer last_number = scanner2.nextInt();
+
+      for (int i = 0; i <= total_numbers; i++) {
+        System.out.println("digite um número: " + i +"/" + total_numbers);
+        Scanner scan = new Scanner(System.in);
+        double number = scan.nextDouble();
+        numbers.add(i, number);
+      }
+      for (int i = 0; i <= total_numbers; i++) {
+        if (!is_integer(numbers.get(i))) continue;
+        if (numbers.get(i) < 1 || numbers.get(i) > last_number) continue;
+        counter ++;
+      }
+      System.out.println("Números digitados: " + numbers.toString() + "\nNúmeros entre 1 e "+last_number+ ": " + counter);
+      // for (const key in numbers) {
+      //   if (!is_integer(numbers[key])) continue;
+      //   if (numbers[key] < 1 || numbers[key] > last_number) continue;
+      //   counter++;
+      // }
+      // alert(
+      //   `Números digitados: ${numbers} \n Entre 1 e ${last_number} tem ${counter} número(s) inteiro(s)`
+      // );
     }
     public static void quick_sort() {
-        ArrayList<Integer> numbers = new ArrayList<Integer>();
-        System.out.println("Digite quantos números deseja somar");
-        Scanner scanner = new Scanner(System.in);
-        Integer n = scanner.nextInt();
-        for (int i = 1; i <= n; i++) {
-           System.out.println("digite os numeros para se somar " + i + "/" + n);
-           Scanner scanner2 = new Scanner(System.in);
-           Integer number_typed = scanner2.nextInt();
-           numbers.add(number_typed);
-        }
-        Integer pivot = numbers.get(0);
-        Integer left = 1;
-        System.out.println(numbers);
-        for (Integer i = 1; i < numbers.size(); i++) {
-          if (pivot >= numbers.get(i)) {
-            Integer aux = numbers.get(left);
-            numbers.set(left,numbers.get(i));
-            numbers.set(i,aux);
-            left++;
-          }
-        }
-        Integer aux = numbers.get(left - 1);
-        numbers.set(left -1, pivot);
-        numbers.set(0,aux);
-        System.out.println(numbers);
-        for (Integer i = 0; i < pivot; i++) {
-          if (numbers.get(i) > numbers.get(i + 1)) {
-            Integer aux2 = numbers.get(i);
-            numbers.set(i,numbers.get(i + 1));
-            numbers.set(i + 1, aux2);
-          }
-          System.out.println("Dentro");
-          System.out.println(numbers);
-        }
-        System.out.println(numbers);
-        for (Integer i = pivot; i < n; i++) {
-          if (numbers.get(i) > numbers.get(i + 1)) {
-            Integer aux3 = numbers.get(i);
-            numbers.set(i,numbers.get(i + 1));
-            numbers.set(i + 1, aux3);
-          }
-        }
-        System.out.println("Sequência em ordem crescente: " + numbers);
+       
     }
     public static void main(String[] args) {
         System.out.println(
