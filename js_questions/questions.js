@@ -88,4 +88,50 @@ const integer_numbers_counter = () => {
     `Números digitados: ${numbers} \n Entre 1 e ${last_number} tem ${counter} número(s) inteiro(s)`
   );
 };
-const quick_sort = () => {};
+const quick_sort = () => {
+  let numbers = [];
+  // let total_numbers = prompt("Digite quantos números deseja somar");
+  // for (let i = 1; i <= total_numbers; i++) {
+  //   let number_typed = parseInt(
+  //     prompt(`digite os numeros para se somar ${i}/${total_numbers}`)
+  //   );
+  //   numbers.push(number_typed);
+  // }
+  for (let i = 0; i < 8; i++) {
+    numbers.push(Math.floor(Math.random() * 100));
+  }
+  let numbers_no_sorted = [...numbers];
+  let [pivot] = numbers;
+  let left = 1;
+  for (let i = 1; i < numbers.length; i++) {
+    if (pivot >= numbers[i]) {
+      let aux = numbers[left];
+      numbers[left] = numbers[i];
+      numbers[i] = aux;
+      left++;
+    }
+  }
+  console.log(numbers);
+  let aux = numbers[left - 1];
+  numbers[left - 1] = pivot;
+  numbers[0] = aux;
+  console.log(numbers);
+  for (let i = 0; i < left - 1; i++) {
+    if (numbers[i] > numbers[i + 1]) {
+      let aux = numbers[i];
+      numbers[i] = numbers[i + 1];
+      numbers[i + 1] = aux;
+    }
+    console.log(numbers);
+  }
+  for (let i = pivot; i < numbers.length; i++) {
+    if (numbers[i] > numbers[i + 1]) {
+      let aux = numbers[i];
+      numbers[i] = numbers[i + 1];
+      numbers[i + 1] = aux;
+    }
+  }
+  alert(
+    `Sequência digitada: \n ${numbers_no_sorted} \n Sequência em ordem crescente: \n ${numbers}`
+  );
+};
